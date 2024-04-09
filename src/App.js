@@ -1,11 +1,14 @@
 import React from "react";
 import Movie from "./components/Movie";
+import MovieContextProvider from "./context/MovieContext";
 
 const App = () => {
   return (
-    <div>
-      <Movie />
-    </div>
+    <MovieContextProvider>
+      <div>
+        <Movie />
+      </div>
+    </MovieContextProvider>
   );
 };
 
