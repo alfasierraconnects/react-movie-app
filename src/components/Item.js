@@ -5,11 +5,11 @@ const Item = ({ movie }) => {
   const imdbUrl = `https://www.imdb.com/title/${movie.id}`;
 
   return (
-    <div className="border rounded overflow-hidden shadow-lg">
+    <div className="rounded-lg bg-gradient-to-t from-sky-950 to-sky-200 overflow-hidden shadow-lg">
       <img className="w-full" src={imageUrl} alt={movie.title} />
       <div className="px-6 py-4">
         <h2 className="font-bold text-xl mb-2">{movie.title}</h2>
-        <p className="text-gray-700 text-base">Rating: {movie.vote_average}</p>
+        <p className="text-gray-200 text-base">Rating: {movie.vote_average}</p>
       </div>
       <div className="px-6 pb-4">
         <a

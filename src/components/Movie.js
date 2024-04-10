@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Item from "./Item";
 
 const Movie = () => {
@@ -6,7 +6,7 @@ const Movie = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [retryInterval, setRetryInterval] = useState(null);
 
-  const fetchMoviesHandler = async () => {
+  const fetchMovies = async () => {
     try {
       setIsLoading(true);
       const response = await fetch(
@@ -27,7 +27,7 @@ const Movie = () => {
     setIsLoading(true);
     setRetryInterval(
       setTimeout(() => {
-        fetchMoviesHandler();
+        fetchMovies();
       }, 5000)
     );
   };
@@ -37,21 +37,26 @@ const Movie = () => {
     clearTimeout(retryInterval);
   };
 
+  useEffect(() => {
+    fetchMovies();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="container mx-auto p-4">
-      <button
+      {/* <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={fetchMoviesHandler}
+        onClick={fetchMovies}
       >
         Fetch
-      </button>
+      </button> */}
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-opacity-50 bg-black">
-          <div className="animate-spin text-white p-10 text-2xl font-extrabold">
+        <div className="absolute inset-0 flex flex-col gap-6 items-center justify-center bg-opacity-50 bg-black">
+          <div className="animate-spin text-white text-2xl font-extrabold">
             .
           </div>
           <button
-            className="ml-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-red-950 text-gray-500 hover:bg-red-600 hover:text-white font-bold py-2 px-8 rounded-full"
             onClick={cancelRetry}
           >
             Cancel
