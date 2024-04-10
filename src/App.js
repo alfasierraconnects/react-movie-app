@@ -5,7 +5,7 @@ import MovieContextProvider from "./context/MovieContext";
 const App = () => {
   return (
     <MovieContextProvider>
-      <div>
+      <div className="bg-gray-800 min-h-screen">
         <Movie />
       </div>
     </MovieContextProvider>
