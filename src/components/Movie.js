@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Item from "./Item";
+import { MovieContext } from "../context/MovieContext";
 
 const Movie = () => {
-  const [movieList, setMovieList] = useState([]);
+  const { movieList, setMovieList } = useContext(MovieContext);
   const [isLoading, setIsLoading] = useState(false);
   const [retryInterval, setRetryInterval] = useState(null);
 

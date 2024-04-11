@@ -1,26 +1,11 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const MovieContext = createContext(null);
 
 const MovieContextProvider = (props) => {
-  const movieList = [
-    {
-      id: 1,
-      movie: "The Shawshank Redemption",
-      rating: 9.2,
-      image: "images/shawshank.jpg",
-      imdb_url: "https://www.imdb.com/title/tt0111161/",
-    },
-    {
-      id: 2,
-      movie: "The Godfather",
-      rating: 9.2,
-      image: "images/godfather.jpg",
-      imdb_url: "https://www.imdb.com/title/tt0068646/",
-    },
-  ];
+  const [movieList, setMovieList] = useState([]);
 
-  const contextValue = { movieList };
+  const contextValue = { movieList, setMovieList };
 
   return (
     <MovieContext.Provider value={contextValue}>

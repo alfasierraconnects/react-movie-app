@@ -6,20 +6,35 @@ const Item = ({ movie }) => {
 
   return (
     <div className="rounded-lg bg-gradient-to-t from-sky-950 to-sky-200 overflow-hidden shadow-lg">
-      <img className="w-full" src={imageUrl} alt={movie.title} />
-      <div className="px-6 py-4">
-        <h2 className="font-bold text-xl mb-2">{movie.title}</h2>
-        <p className="text-gray-200 text-base">Rating: {movie.vote_average}</p>
+      <div className="overflow-hidden">
+        <img
+          className="w-full hover:scale-125 transition duration-700"
+          src={imageUrl}
+          alt={movie.title}
+        />
       </div>
-      <div className="px-6 pb-4">
-        <a
-          className="text-blue-500 hover:text-blue-700"
-          href={imdbUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="px-6 py-4 flex flex-col justify-between">
+        <h2
+          className={`font-bold text-xl text-gray-950 mb-2 whitespace-nowrap ${
+            movie.title.length > 30 ? "animate-loop-scroll" : ""
+          }`}
         >
-          IMDb
-        </a>
+          {movie.title}
+        </h2>
+
+        <div className="flex justify-between">
+          <a
+            className=" hover:text-blue-700 text-yellow-300 font-medium"
+            href={imdbUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            IMDb
+          </a>
+          <p className="text-gray-200 font-medium">
+            <span className="text-lg">{movie.vote_average}</span> / 10
+          </p>
+        </div>
       </div>
     </div>
   );
